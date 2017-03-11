@@ -1,0 +1,52 @@
+<div [formGroup]="form">
+	<div [ngSwitch]="control.controlType">
+		<md-input-container *ngSwitchCase="'textbox'" class="{{control.className}}">
+			<input mdInput [placeholder]="control.label" [required]="control.required" [readonly]="control.readonly" [formControlName]="control.key"
+				[id]="control.key">
+		</md-input-container>
+		<md-checkbox *ngSwitchCase="'checkbox'" [formControlName]="control.key" [id]="control.key">
+			{{control.label}}
+		</md-checkbox>
+		<md-input-container *ngSwitchCase="'textarea'">
+			<textarea mdInput [placeholder]="control.label" [formControlName]="control.key" [id]="control.key" [readonly]="control.readonly"></textarea>
+		</md-input-container>
+
+		<md-select [placeholder]="control.label" *ngSwitchCase="'dropdown'" [formControlName]="control.key">
+			<md-option *ngFor="let opt of control.options" [value]="opt.key">
+				{{ opt.value }}
+			</md-option>
+		</md-select>
+
+		<md-radio-group *ngSwitchCase="'radio'" [formControlName]="control.key">
+			<md-radio-button [id]="opt.key" *ngFor="let opt of control.options" [value]="opt.key">{{ opt.value }}</md-radio-button>
+		</md-radio-group>
+
+		<div *ngSwitchCase="'autocomplete'">
+			<md-input-container>
+				<input type="text" mdInput [mdAutocomplete]="auto"   [formControlName]="control.key"  >
+			</md-input-container>
+
+			<md-autocomplete #auto="mdAutocomplete">
+				<md-option *ngFor="let opt of control.options  " [value]="opt.key">
+					{{ opt.key }}
+				</md-option>
+			</md-autocomplete>
+		</div>
+
+
+		<md-slide-toggle *ngSwitchCase="'slide-toggle'" [formControlName]="control.key">
+			{{control.label}}
+		</md-slide-toggle>
+
+		<md-slider thumbLabel *ngSwitchCase="'slider'" [min]="control.min" [max]="control.max" [step]="control.step" [formControlName]="control.key">
+
+		</md-slider>
+
+		<!--<md-button-toggle-group multiple *ngSwitchCase="'button-toggle'"  [formControlName]="control.key">
+			<md-button-toggle *ngFor="let opt of control.options" [value]="opt.key">
+				{{ opt.value }} 
+			</md-button-toggle>
+		</md-button-toggle-group>-->
+
+	</div>
+</div>

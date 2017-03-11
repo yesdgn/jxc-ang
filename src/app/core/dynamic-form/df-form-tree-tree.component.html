@@ -1,0 +1,10 @@
+<div class="flexDir">
+  <div *ngIf="treeMenuDataArr" class="flexItem">
+    <p-tree expanded="true" [value]="treeMenuDataArr" selectionMode="single" (onNodeSelect)="treeNodeSelect(0,$event.node)">
+    </p-tree>
+  </div>
+  <div class="flexItem9">
+    <p-tree expanded="true" [value]="treeMenuDataArr" selectionMode="single" (onNodeSelect)="treeNodeSelect(1,$event.node)">
+    </p-tree>
+  </div>
+</div>

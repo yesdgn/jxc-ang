@@ -1,0 +1,75 @@
+<div class="flexDir">
+  <div *ngIf="treeControlArr.length>0 && treeControlArr[0].controlType == 'Tree' " class="flexItem">
+    <p-tree expanded="true" [value]="treeMenuDataArr" selectionMode="single" (onNodeSelect)="treeNodeSelect(0,$event.node)">
+    </p-tree>
+  </div>
+  <div class="flexItem9">
+    <form class="maxW1024" #theform="ngForm" [formGroup]="form" *ngIf="controls.length>0">
+      <md-grid-list cols="2" rowHeight="75px">
+        <md-grid-tile rowspan="1" colspan="2">
+          <button md-raised-button [color]="button.Color" style="margin-left: 10px;" *ngFor="let button of buttons" (click)="formButtonClick(button)">{{button.Label}}</button>
+        </md-grid-tile>
+        <md-grid-tile *ngFor="let control of controls" [colspan]="control.controlType=='textarea'?2:1">
+          <df-control [control]="control" [form]="form"></df-control>
+        </md-grid-tile>
+      </md-grid-list>
+    </form>
+    <md-card *ngIf="tabCount==1">
+      <p-dataTable *ngIf="dataTableControlArr[0].controlType=='DataTable'" [value]="formDataArr[0]" [rows]="20" [paginator]="true"
+        [pageLinks]="10" [rowsPerPageOptions]="[10,20,50,100]" sortMode="multiple" [editable]="!dataTableControlArr[0].readonly">
+        <p-column *ngFor="let col of pageListControlArr[0]" [field]="col.colName" [editable]="col.editable" [header]="col.label"
+          [hidden]="col.IsHide" [sortable]="col.sortable"></p-column>
+          <p-column styleClass="col-button">
+            <template pTemplate type="header">
+              <span>操 作</span>
+            </template>
+            <template let-rowData="rowData" pTemplate type="body">
+              <button md-icon-button color="primary" *ngIf="dataTableControlArr[0].DataTableEditRouteUrl  && rowData.ID" pButton (click)="dataTableEdit(dataTableControlArr[0],rowData)"><md-icon  >edit</md-icon></button>
+              <button md-icon-button color="primary" *ngIf="!dataTableControlArr[0].readonly" pButton (click)="dataTableDelete(dataTableControlArr[0].DataTableIndex,rowData)"><md-icon  >delete_forever</md-icon></button>
+            </template>
+          </p-column>
+          <footer style="text-align:left" *ngIf="!dataTableControlArr[0].readonly">
+            <div>
+              <button md-mini-fab (click)="dataTableAdd(dataTableControlArr[0].DataTableIndex)">
+            <md-icon class="md-24">add</md-icon>
+          </button>
+            </div>
+          </footer>
+          </p-dataTable>
+          <div *ngIf="dataTableControlArr[0].controlType=='TreeSelect'">
+            <p-tree expanded="true" [value]="treeMenuDataArr" selectionMode="checkbox">
+            </p-tree>
+          </div>
+    </md-card>
+    <md-tab-group *ngIf="tabCount>1">
+      <md-tab label={{dataTable.label}} *ngFor="let dataTable of dataTableControlArr">
+        <p-dataTable *ngIf="dataTable.controlType == 'DataTable' " [value]="formDataArr[dataTable.DataTableIndex]" [rows]="20" [paginator]="true"
+          [pageLinks]="10" [rowsPerPageOptions]="[10,20,50,100]" sortMode="multiple" [editable]="!dataTable.readonly">
+          <p-column *ngFor="let col of pageListControlArr[dataTable.DataTableIndex]" [field]="col.colName" [editable]="col.editable"
+            [header]="col.label" [hidden]="col.IsHide" [sortable]="col.sortable"></p-column>
+            <p-column styleClass="col-button">
+              <template pTemplate type="header">
+                <span>操 作</span>
+              </template>
+              <template let-rowData="rowData" pTemplate type="body">
+                <button md-icon-button color="primary" *ngIf="dataTable.DataTableEditRouteUrl && rowData.ID" pButton (click)="dataTableEdit(dataTable,rowData)"><md-icon  >edit</md-icon></button>
+                <button md-icon-button color="primary" *ngIf="!dataTable.readonly" pButton (click)="dataTableDelete(dataTable.DataTableIndex,rowData)"><md-icon  >delete_forever</md-icon></button>
+              </template>
+            </p-column>
+            <footer style="text-align:left" *ngIf="!dataTable.readonly">
+              <div>
+                <button md-mini-fab (click)="dataTableAdd(dataTable.DataTableIndex)">
+      <md-icon class="md-24">add</md-icon>
+  </button>
+              </div>
+            </footer>
+            </p-dataTable>
+            <p-tree *ngIf="dataTable.controlType == 'TreeSelect' " [(selection)]="formDataArr[dataTable.DataTableIndex]" expanded="true"
+              [value]="treeMenuDataArr" selectionMode="checkbox">
+              </p-tree>
+      </md-tab>
+
+    </md-tab-group>
+
+  </div>
+</div>

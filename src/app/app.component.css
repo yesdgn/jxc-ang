@@ -1,0 +1,59 @@
+.app{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+header{
+    height: 80px;
+    display: flex;
+    align-items:center;
+    background-color: black;
+ }
+header .logo{
+    margin-left: 10px;
+    width:50px;
+    height: 50px;
+}
+header .appName{
+    margin-left: 10px;
+    color: #666;
+}
+header .favorite{
+    margin: 0 10px 10px 50px;
+    align-self:flex-end;
+    flex: 1;
+    color:#2db7f5;
+}
+header .right{
+    margin: 0 20px 0 10px;
+    display: flex;
+     color:#2db7f5;
+}
+
+header .right .profile{
+    margin-left:20px ;
+    display: flex;
+    color:#2db7f5;
+    cursor:Pointer;
+}
+.content{
+    flex: 1;
+}
+.mainContent{
+    display: flex;
+    flex:1;
+    min-height: 580px;
+}
+
+.app footer{
+     height: 60px;
+     display: flex;
+     justify-content:center;
+     align-items:center;
+     width:100%;
+}
+
+md-sidenav {
+  width: 300px;
+}
+ 

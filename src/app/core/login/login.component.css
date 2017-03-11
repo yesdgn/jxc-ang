@@ -1,0 +1,10 @@
+.loginPage{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    height: 100%;
+}
+
+form ,md-checkbox,md-textarea,md-select,md-radio-group,md-input-container {
+ width: 92%;
+ }

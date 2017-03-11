@@ -1,0 +1,10 @@
+<div class="menu" *ngFor="let item of menuData">
+	<button md-button routerLink={{item.DynamicFormUrl}}>
+			{{item.MenuName}} 
+			</button>
+	<div class="submenu" *ngFor="let sumitem of item.children">
+		<button md-button routerLink={{sumitem.DynamicFormUrl}}>
+			{{sumitem.MenuName}} 
+			</button>
+	</div>
+</div>

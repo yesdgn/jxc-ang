@@ -1,0 +1,15 @@
+df-control {
+width: 100%;
+margin: 0 80px 0 80px ;
+}
+
+.flexDir{
+    display: -webkit-flex; /* Safari */
+    display: flex;
+    flex-direction: row ;
+}
+
+.flexItem{flex: 1;}
+.flexItem9{flex: 9;}
+
+ 

@@ -1,0 +1,37 @@
+<form class="oneCol" #theform="ngForm" (ngSubmit)="formSubmit()">
+  <md-grid-list cols="1" rowHeight="75px" class="marT10">
+    <md-grid-tile rowspan="1" colspan="1">
+      <button md-raised-button color="primary" type="submit">保存</button>
+    </md-grid-tile>
+    <md-grid-tile>
+      <md-input-container>
+        <input mdInput placeholder="代码" [(ngModel)]="profile.Code" name="code">
+      </md-input-container>
+    </md-grid-tile>
+    <md-grid-tile>
+      <md-input-container>
+        <input mdInput placeholder="姓名" [(ngModel)]="profile.Name" name="name" required>
+      </md-input-container>
+    </md-grid-tile>
+    <md-grid-tile>
+      <md-input-container>
+        <input mdInput placeholder="电子邮件" [(ngModel)]="profile.Email" name="email">
+      </md-input-container>
+    </md-grid-tile>
+    <md-grid-tile>
+      <md-input-container>
+        <input mdInput placeholder="手机" [(ngModel)]="profile.Mobile" name="mobile">
+      </md-input-container>
+    </md-grid-tile>
+    <md-grid-tile>
+      <md-input-container>
+        <input mdInput placeholder="公司" [(ngModel)]="profile.CompID" name="compID">
+      </md-input-container>
+    </md-grid-tile>
+    <md-grid-tile>
+      <md-input-container>
+        <textarea mdInput placeholder="备注" [(ngModel)]="profile.Remark" name="remark"></textarea>
+      </md-input-container>
+    </md-grid-tile>
+  </md-grid-list>
+</form>

@@ -1,0 +1,35 @@
+<div class="flexDir">
+  <div *ngIf="treeMenuDataArr" class="flexItem">
+    <p-tree expanded="true" [value]="treeMenuDataArr" selectionMode="single" (onNodeSelect)="treeNodeSelect(0,$event.node)">
+    </p-tree>
+  </div>
+  <div class="flexItem9">
+    <div class=" marB10">
+      <button md-raised-button [color]="button.Color" style="margin-left: 10px;" *ngFor="let button of buttons" (click)="formButtonClick(button)">{{button.Label}}</button>
+    </div>
+    <div *ngFor="let dataTable of dataTableControlArr">
+      <p-dataTable [value]="formDataArr[dataTable.DataTableIndex]" [rows]="20" [paginator]="true" [pageLinks]="10" [rowsPerPageOptions]="[10,20,50,100]"
+        sortMode="multiple" [editable]="!dataTable.readonly"  [totalRecords]="formTotalCountArr[dataTable.DataTableIndex]?.TotalCount"
+        [lazy]="dataTable.IsLazyLoad" (onLazyLoad)="lazyLoadData($event)">
+        <p-column *ngFor="let col of pageListControlArr[dataTable.DataTableIndex]" [field]="col.colName" [editable]="col.editable"
+          [header]="col.label" [hidden]="col.IsHide" [sortable]="col.sortable" [filter]="col.filter" filterMatchMode="contains"></p-column>
+        <p-column styleClass="col-button">
+          <template pTemplate type="header">
+            <span>操 作</span>
+          </template>
+          <template let-rowData="rowData" pTemplate type="body">
+            <button md-icon-button color="primary" *ngIf="dataTable.DataTableEditRouteUrl && rowData.ID" pButton (click)="dataTableEdit(dataTable,rowData)"><md-icon  >edit</md-icon></button>
+            <button md-icon-button color="primary" *ngIf="!dataTable.readonly" pButton (click)="dataTableDelete(dataTable.DataTableIndex,rowData)"><md-icon  >delete_forever</md-icon></button>
+          </template>
+        </p-column>
+        <footer style="text-align:left" *ngIf="!dataTable.readonly">
+          <div>
+            <button md-mini-fab (click)="dataTableAdd(dataTable.DataTableIndex)">
+            <md-icon class="md-24">add</md-icon>
+          </button>
+          </div>
+        </footer>
+      </p-dataTable>
+    </div>
+  </div>
+</div>

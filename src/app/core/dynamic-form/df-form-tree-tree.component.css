@@ -1,0 +1,10 @@
+.flexDir{
+    display: -webkit-flex; /* Safari */
+    display: flex;
+    flex-direction: row ;
+}
+
+.flexItem{flex: 1;}
+.flexItem9{flex: 9;}
+
+ 

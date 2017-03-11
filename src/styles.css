@@ -1,1 +1,129 @@
 /* You can add global styles to this file, and also import other style files */
+/*@import '~https://fonts.googleapis.com/icon?family=Material+Icons';*/
+@import '~@angular/material/core/theming/prebuilt/deeppurple-amber.css';
+@import '~primeng/resources/themes/omega/theme.css';
+@import '~primeng/resources/primeng.min.css';
+@import '/assets/css/font-awesome.min.css';
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  /*src: url(https://example.com/MaterialIcons-Regular.eot);*/ /* For IE6-8 */
+  src: local('Material Icons'),
+       local('MaterialIcons-Regular'),
+       url(/assets/MaterialIcons-Regular.woff) format('woff') 
+ 
+}
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+
+* { 
+    margin: 0;
+    padding: 0;
+}
+a {text-decoration:none;}
+a:link {color: #2db7f5}		/* 未访问的链接 */
+a:visited {color: #2db7f5}	/* 已访问的链接 */
+a:hover {color: #2db7f5}	/* 鼠标移动到链接上 */
+a:active {color: #2db7f5}	/* 选定的链接 */
+
+.marL10{
+    margin-left: 10px;
+}
+.marL20{
+    margin-left: 20px !important; 
+}
+
+.marT10{
+    margin-top: 10px;
+}
+
+.marB10{
+    margin-bottom: 10px;
+}
+
+.flex1{
+    flex: 1;
+}
+.hide{
+    display:none;
+}
+
+.floatL{
+    float:left;
+}
+.floatR{
+    float:right;
+}
+svg .area {
+  fill: steelblue;
+  clip-path: url(#clip);
+}
+
+svg .zoom {
+  cursor: move;
+  fill: none;
+  pointer-events: all;
+}
+ .md-sidenav-content{
+     width: 100%;
+ }
+
+ .maxW800{
+     max-width: 800px;
+     margin: 0 auto;
+ }
+
+  .maxW1024{
+     max-width: 1024px;
+     margin: 0 auto;
+ }
+
+.oneCol md-grid-list{
+    margin-left: 150px;
+    margin-right: 150px;
+}
+
+.oneCol md-grid-list md-input-container   {
+    width: 40%;
+ } 
+
+ 
+
+
+.twoCol md-grid-list{
+    margin-left: 130px;
+    margin-right: 130px;
+}
+
+.twoCol md-grid-tile md-input-container  {
+    margin-left: 100px;
+    margin-right: 100px;
+    width:100%;
+}
+ 
+

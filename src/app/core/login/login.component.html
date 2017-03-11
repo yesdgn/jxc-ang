@@ -1,0 +1,52 @@
+<div class="loginPage">
+  <md-tab-group>
+    <md-tab label="登录">
+      <form #logonForm="ngForm" (ngSubmit)="login()"  >
+        <md-grid-list cols="1" rowHeight="50px" class="marT10">
+          <md-grid-tile>
+            <md-input-container>
+              <input mdInput placeholder="用户名" [(ngModel)]="loginUser.loginID" name="loginID" required id="loginID">
+            </md-input-container>
+          </md-grid-tile>
+          <md-grid-tile>
+            <md-input-container>
+              <input mdInput placeholder="密码" type="password" [(ngModel)]="loginUser.password" name="password" required>
+            </md-input-container>
+          </md-grid-tile>
+          <md-grid-tile>
+            <md-checkbox (change)="rememberLoginChange()" [(ngModel)]="loginUser.rememberLogin" name="rememberLogin">
+              记住用户名
+            </md-checkbox>
+          </md-grid-tile>
+          <md-grid-tile rowspan="2">
+            <button md-raised-button color="primary" type="submit" [disabled]="!logonForm.form.valid">登录</button>
+          </md-grid-tile>
+        </md-grid-list>
+      </form>
+    </md-tab>
+    <md-tab label="注册">
+      <form #regForm="ngForm" (ngSubmit)="userReg()"  >
+        <md-grid-list cols="1" rowHeight="50px" class="marT10">
+          <md-grid-tile>
+            <md-input-container>
+              <input mdInput placeholder="用户名" [(ngModel)]="regUser.loginID" name="regLoginID" required>
+            </md-input-container>
+          </md-grid-tile>
+          <md-grid-tile>
+            <md-input-container>
+              <input mdInput placeholder="密码" type="password" [(ngModel)]="regUser.password" name="regPassword" required>
+            </md-input-container>
+          </md-grid-tile>
+          <md-grid-tile>
+            <md-input-container>
+              <input mdInput placeholder="确认密码" type="password" [(ngModel)]="regUser.password2" name="regPassword2" required>
+            </md-input-container>
+          </md-grid-tile>
+          <md-grid-tile rowspan="2">
+            <button md-raised-button color="primary" type="submit" [disabled]="!regForm.form.valid">注册</button>
+          </md-grid-tile>
+        </md-grid-list>
+      </form>
+    </md-tab>
+  </md-tab-group>
+</div>

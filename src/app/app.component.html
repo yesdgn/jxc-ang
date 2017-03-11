@@ -1,3 +1,45 @@
-<h1>
-  {{title}}
-</h1>
+<div class="app">
+	<header *ngIf="isLogin">
+		<a href={{appconfig.APPURL}} target="_blank"><img class="logo" src="../logo.png" /></a>
+		<a routerLink="/main">
+			<h2 class="appName">{{appconfig.APPNAME}} </h2>
+		</a>
+		<div class="favorite">
+			<app-favorite></app-favorite>
+		</div>
+		<div class="right">
+			<button md-icon-button (click)="showMessages()"><md-icon  >notifications_none</md-icon></button>
+			<button md-icon-button (click)="setFavorites()"><md-icon  >star_outline</md-icon></button>
+			<button md-icon-button class="profile  " [md-menu-trigger-for]="menu" ><h4>{{userInfo.Name}}</h4></button>
+			<md-menu #menu="mdMenu" x-position="before" y-position="below">
+				<button md-menu-item routerLink="/profile"> 个人中心 </button>
+				<button md-menu-item routerLink="/changepassword"> 修改密码 </button>
+				<button md-menu-item (click)="logout()"> 注销登录 </button>
+			</md-menu>
+		</div>
+	</header>
+	<md-sidenav-container class="content">
+		<md-sidenav mode="push" #start (mouseleave)="start.close()">
+			<app-mainmenu *ngIf="isLogin"></app-mainmenu>
+		</md-sidenav>
+		<div class="mainContent">
+			<div (mouseover)="start.open()" style="width:5px;" *ngIf="isLogin"> </div>
+			<div class="flex1">
+				<router-outlet></router-outlet>
+			</div>
+		</div>
+		<footer>DGN</footer>
+	</md-sidenav-container>
+
+
+	<!--
+    <div class="contentLeft" *ngIf="isLogin">
+        <app-mainmenu></app-mainmenu>
+    </div>
+    <div class="contentRight">
+      <router-outlet></router-outlet>
+    </div>
+    -->
+
+
+</div>
